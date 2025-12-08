@@ -1,0 +1,32 @@
+{
+  "name": "hi-theme",
+  "version": "1.0.0",
+  "description": "This is hi-theme",
+  "keywords": [
+    "theme"
+  ],
+  "homepage": "https://github.com/letnp1024/hi-theme#readme",
+  "bugs": {
+    "url": "https://github.com/letnp1024/hi-theme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letnp1024/hi-theme.git"
+  },
+  "license": "ISC",
+  "author": "LeePhuong",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass scss:assets/css"
+    },
+  "devDependencies": {
+    "sass": "^1.94.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "autoprefixer": "^10.4.22",
+    "bootstrap": "^5.3.8",
+    "postcss-cli": "^11.0.1"
+  }
+}
