@@ -1,0 +1,145 @@
+═══════════════════════════════════════════════════════════════
+  HƯỚNG DẪN THIẾT LẬP COMPILE TYPESCRIPT SANG JAVASCRIPT
+═══════════════════════════════════════════════════════════════
+
+Dự án hiện tại của bạn đang compile SASS → CSS thành công.
+Bây giờ bạn muốn thêm khả năng compile TypeScript → JavaScript.
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 1: CÀI ĐẶT TYPESCRIPT
+═══════════════════════════════════════════════════════════════
+
+Mở terminal và chạy lệnh sau để cài đặt TypeScript:
+
+    npm install --save-dev typescript
+
+Hoặc nếu dùng yarn:
+
+    yarn add -D typescript
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 2: TẠO CẤU TRÚC THƯ MỤC
+═══════════════════════════════════════════════════════════════
+
+Tạo thư mục để chứa file TypeScript nguồn (ví dụ: ts/ hoặc src/ts/)
+
+    mkdir ts
+    mkdir assets\js
+
+Hoặc bạn có thể tạo cấu trúc khác tùy theo nhu cầu:
+    - ts/          → chứa file .ts
+    - assets/js/   → chứa file .js đã compile
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 3: TẠO FILE TSCONFIG.JSON
+═══════════════════════════════════════════════════════════════
+
+Tạo file tsconfig.json ở thư mục gốc của dự án với nội dung:
+
+{
+  "compilerOptions": {
+    "target": "ES2020",              // Phiên bản JavaScript output
+    "module": "commonjs",            // Hệ thống module
+    "outDir": "./assets/js",         // Thư mục output
+    "rootDir": "./ts",               // Thư mục chứa file TypeScript
+    "strict": true,                  // Bật strict mode
+    "esModuleInterop": true,         // Tương thích ES modules
+    "skipLibCheck": true,            // Bỏ qua kiểm tra file .d.ts
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true                // Tạo file .map để debug
+  },
+  "include": ["ts/**/*"],            // File TypeScript cần compile
+  "exclude": ["node_modules"]        // Thư mục loại trừ
+}
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 4: CẬP NHẬT PACKAGE.JSON
+═══════════════════════════════════════════════════════════════
+
+Thêm các script sau vào phần "scripts" trong package.json:
+
+"scripts": {
+  "compile:sass": "sass scss:assets/css",
+  "compile:ts": "tsc",
+  "compile:ts:watch": "tsc --watch",
+  "compile:all": "npm run compile:sass && npm run compile:ts"
+}
+
+Giải thích:
+  - compile:ts        → Compile TypeScript một lần
+  - compile:ts:watch  → Compile TypeScript và tự động compile lại khi có thay đổi
+  - compile:all       → Compile cả SASS và TypeScript cùng lúc
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 5: SỬ DỤNG
+═══════════════════════════════════════════════════════════════
+
+1. Tạo file TypeScript trong thư mục ts/ (ví dụ: ts/main.ts)
+
+2. Chạy lệnh compile:
+   npm run compile:ts
+
+3. File JavaScript sẽ được tạo trong assets/js/
+
+4. Nếu muốn tự động compile khi có thay đổi:
+   npm run compile:ts:watch
+
+═══════════════════════════════════════════════════════════════
+VÍ DỤ FILE TYPESCRIPT
+═══════════════════════════════════════════════════════════════
+
+Tạo file ts/main.ts:
+
+    function greet(name: string): void {
+        console.log(`Hello, ${name}!`);
+    }
+
+    greet("World");
+
+Sau khi compile, sẽ tạo ra assets/js/main.js:
+
+    function greet(name) {
+        console.log(`Hello, ${name}!`);
+    }
+    greet("World");
+
+═══════════════════════════════════════════════════════════════
+TÙY CHỈNH NÂNG CAO
+═══════════════════════════════════════════════════════════════
+
+Nếu muốn compile TypeScript cho trình duyệt (không dùng Node.js):
+
+1. Thay đổi "target" trong tsconfig.json thành "ES5" hoặc "ES2015"
+2. Thay đổi "module" thành "ES2015" hoặc "ESNext"
+3. Có thể cần thêm "lib": ["DOM", "ES2020"] để sử dụng DOM APIs
+
+Nếu muốn dùng bundler (webpack, vite, etc.):
+
+1. Cài đặt bundler tương ứng
+2. Cấu hình bundler để xử lý TypeScript
+3. TypeScript sẽ được compile tự động trong quá trình bundle
+
+═══════════════════════════════════════════════════════════════
+LƯU Ý
+═══════════════════════════════════════════════════════════════
+
+- Đảm bảo cấu trúc thư mục khớp với cấu hình trong tsconfig.json
+- File .ts phải được đặt trong thư mục được chỉ định trong "include"
+- Nếu thay đổi cấu trúc thư mục, nhớ cập nhật tsconfig.json
+- Có thể thêm .gitignore để bỏ qua thư mục output (assets/js/)
+
+═══════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+Lỗi: "Cannot find module 'typescript'"
+→ Chạy lại: npm install --save-dev typescript
+
+Lỗi: "File not found" khi compile
+→ Kiểm tra đường dẫn trong tsconfig.json (rootDir, outDir)
+
+Lỗi: "Cannot find name 'console'"
+→ Thêm "lib": ["ES2020", "DOM"] vào compilerOptions
+
+═══════════════════════════════════════════════════════════════
+

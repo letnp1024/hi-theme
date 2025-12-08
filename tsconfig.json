@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",              // Phiên bản JavaScript output
+      "module": "commonjs",            // Hệ thống module
+      "outDir": "./assets/js",         // Thư mục output
+      "rootDir": "./ts",               // Thư mục chứa file TypeScript
+      "strict": true,                  // Bật strict mode
+      "esModuleInterop": true,         // Tương thích ES modules
+      "skipLibCheck": true,            // Bỏ qua kiểm tra file .d.ts
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true                // Tạo file .map để debug
+    },
+    "include": ["ts/**/*"],            // File TypeScript cần compile
+    "exclude": ["node_modules"]        // Thư mục loại trừ
+  }

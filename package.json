@@ -18,10 +18,18 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "sass scss:assets/css"
-    },
+    "compile:sass": "sass scss:assets/css",
+    "compile:sass:watch": "sass scss:assets/css --watch",
+    "compile:ts": "tsc",
+    "compile:ts:watch": "tsc --watch",
+    "compile:all": "npm run compile:sass && npm run compile:ts",
+    "compile:watch": "concurrently \"npm run compile:sass:watch\" \"npm run compile:ts:watch\"",
+    "compile:all:watch": "npm run compile:watch"
+  },
   "devDependencies": {
-    "sass": "^1.94.2"
+    "concurrently": "^9.2.1",
+    "sass": "^1.94.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
