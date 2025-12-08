@@ -1,0 +1,328 @@
+═══════════════════════════════════════════════════════════════
+  DANH SÁCH THƯ VIỆN CẦN TẢI BẢN TYPESCRIPT (@types)
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+PHẦN 1: THƯ VIỆN CẦN CÀI @types (CÓ SẴN TRÊN NPM)
+═══════════════════════════════════════════════════════════════
+
+Các thư viện này CẦN cài thêm @types để có TypeScript support:
+
+───────────────────────────────────────────────────────────────
+1. AOS (Animate On Scroll)
+───────────────────────────────────────────────────────────────
+   Thư viện: aos
+   TypeScript: @types/aos
+   Lệnh cài: npm install --save-dev @types/aos
+   Phiên bản: ^3.0.7
+
+───────────────────────────────────────────────────────────────
+2. jQuery
+───────────────────────────────────────────────────────────────
+   Thư viện: jquery
+   TypeScript: @types/jquery
+   Lệnh cài: npm install --save-dev @types/jquery
+   Phiên bản: ^3.5.29
+
+───────────────────────────────────────────────────────────────
+3. Isotope Layout
+───────────────────────────────────────────────────────────────
+   Thư viện: isotope-layout
+   TypeScript: @types/isotope-layout
+   Lệnh cài: npm install --save-dev @types/isotope-layout
+   Phiên bản: ^3.0.15
+
+───────────────────────────────────────────────────────────────
+4. Node.js Types
+───────────────────────────────────────────────────────────────
+   Thư viện: @types/node (đã là types, không cần thư viện gốc)
+   TypeScript: @types/node
+   Lệnh cài: npm install @types/node
+   Phiên bản: ^24.10.1
+   Lưu ý: Đây là types cho Node.js APIs, cài vào dependencies
+
+───────────────────────────────────────────────────────────────
+5. Bootstrap (Tùy chọn)
+───────────────────────────────────────────────────────────────
+   Thư viện: bootstrap
+   TypeScript: @types/bootstrap
+   Lệnh cài: npm install --save-dev @types/bootstrap
+   Phiên bản: ^5.3.8 (tương ứng)
+   Lưu ý: Chỉ cần nếu bạn dùng Bootstrap JavaScript components
+
+───────────────────────────────────────────────────────────────
+6. Magnific Popup (Tùy chọn)
+───────────────────────────────────────────────────────────────
+   Thư viện: magnific-popup
+   TypeScript: @types/magnific-popup
+   Lệnh cài: npm install --save-dev @types/magnific-popup
+   Lưu ý: Có thể không có sẵn, cần kiểm tra
+
+───────────────────────────────────────────────────────────────
+7. Waypoints (Tùy chọn)
+───────────────────────────────────────────────────────────────
+   Thư viện: waypoints
+   TypeScript: @types/waypoints
+   Lệnh cài: npm install --save-dev @types/waypoints
+   Lưu ý: Có thể không có sẵn, cần kiểm tra
+
+═══════════════════════════════════════════════════════════════
+PHẦN 2: THƯ VIỆN KHÔNG CẦN @types (ĐÃ CÓ TYPES TÍCH HỢP)
+═══════════════════════════════════════════════════════════════
+
+Các thư viện này ĐÃ CÓ TypeScript definitions tích hợp sẵn,
+KHÔNG CẦN cài @types riêng:
+
+───────────────────────────────────────────────────────────────
+1. GSAP (GreenSock Animation Platform)
+───────────────────────────────────────────────────────────────
+   Thư viện: gsap
+   TypeScript: ✅ Đã có sẵn trong package
+   Lệnh cài: npm install gsap
+   Lưu ý: GSAP 3.0+ đã có types tích hợp, không cần @types/gsap
+
+───────────────────────────────────────────────────────────────
+2. Swiper
+───────────────────────────────────────────────────────────────
+   Thư viện: swiper
+   TypeScript: ✅ Đã có sẵn trong package
+   Lệnh cài: npm install swiper
+   Lưu ý: Swiper đã có types tích hợp sẵn
+
+───────────────────────────────────────────────────────────────
+3. Smooth Scrollbar
+───────────────────────────────────────────────────────────────
+   Thư viện: smooth-scrollbar
+   TypeScript: ✅ Đã có sẵn trong package
+   Lệnh cài: npm install smooth-scrollbar
+   Lưu ý: Đã có types tích hợp
+
+═══════════════════════════════════════════════════════════════
+PHẦN 3: THƯ VIỆN KHÔNG CẦN TYPES (CHỈ LÀ CSS/STYLES)
+═══════════════════════════════════════════════════════════════
+
+Các thư viện này chỉ là CSS, không cần TypeScript types:
+
+───────────────────────────────────────────────────────────────
+1. Font Awesome
+───────────────────────────────────────────────────────────────
+   Thư viện: @fortawesome/fontawesome-free
+   TypeScript: ❌ Không cần (chỉ là CSS/fonts)
+   Lưu ý: Chỉ cần import CSS, không cần types
+
+───────────────────────────────────────────────────────────────
+2. Bootstrap (CSS)
+───────────────────────────────────────────────────────────────
+   Thư viện: bootstrap
+   TypeScript: ❌ Không cần cho CSS (chỉ cần nếu dùng JS)
+   Lưu ý: Nếu chỉ dùng CSS thì không cần @types/bootstrap
+
+───────────────────────────────────────────────────────────────
+3. Animate.css
+───────────────────────────────────────────────────────────────
+   Thư viện: animate.css
+   TypeScript: ❌ Không cần (chỉ là CSS)
+   Lưu ý: Chỉ cần import CSS
+
+═══════════════════════════════════════════════════════════════
+PHẦN 4: THƯ VIỆN CẦN KIỂM TRA HOẶC TẠO TYPES THỦ CÔNG
+═══════════════════════════════════════════════════════════════
+
+Các thư viện này có thể không có @types sẵn, cần kiểm tra:
+
+───────────────────────────────────────────────────────────────
+1. jQuery Ripples
+───────────────────────────────────────────────────────────────
+   Thư viện: jquery.ripples
+   TypeScript: ❓ Cần kiểm tra @types/jquery.ripples
+   Lệnh kiểm tra: npm search @types/jquery.ripples
+   Nếu không có: Tạo file .d.ts thủ công hoặc dùng any
+
+───────────────────────────────────────────────────────────────
+2. Particles.js
+───────────────────────────────────────────────────────────────
+   Thư viện: particles.js
+   TypeScript: ❓ Cần kiểm tra @types/particles.js
+   Lệnh kiểm tra: npm search @types/particles.js
+   Nếu không có: Tạo file .d.ts thủ công hoặc dùng any
+
+───────────────────────────────────────────────────────────────
+3. WOW.js
+───────────────────────────────────────────────────────────────
+   Thư viện: wow.js
+   TypeScript: ❓ Cần kiểm tra @types/wow.js
+   Lệnh kiểm tra: npm search @types/wow.js
+   Nếu không có: Tạo file .d.ts thủ công hoặc dùng any
+
+───────────────────────────────────────────────────────────────
+4. Magnific Popup
+───────────────────────────────────────────────────────────────
+   Thư viện: magnific-popup
+   TypeScript: ❓ Cần kiểm tra @types/magnific-popup
+   Lệnh kiểm tra: npm search @types/magnific-popup
+   Nếu không có: Tạo file .d.ts thủ công hoặc dùng any
+
+───────────────────────────────────────────────────────────────
+5. Waypoints
+───────────────────────────────────────────────────────────────
+   Thư viện: waypoints
+   TypeScript: ❓ Cần kiểm tra @types/waypoints
+   Lệnh kiểm tra: npm search @types/waypoints
+   Nếu không có: Tạo file .d.ts thủ công hoặc dùng any
+
+═══════════════════════════════════════════════════════════════
+PHẦN 5: LỆNH CÀI ĐẶT TẤT CẢ @types (KHUYẾN NGHỊ)
+═══════════════════════════════════════════════════════════════
+
+Lệnh cài tất cả @types đã xác nhận có sẵn:
+
+───────────────────────────────────────────────────────────────
+Lệnh đầy đủ:
+───────────────────────────────────────────────────────────────
+
+npm install --save-dev @types/aos @types/jquery @types/isotope-layout @types/node
+
+───────────────────────────────────────────────────────────────
+Lệnh từng bước:
+───────────────────────────────────────────────────────────────
+
+# Cài @types cho AOS
+npm install --save-dev @types/aos
+
+# Cài @types cho jQuery
+npm install --save-dev @types/jquery
+
+# Cài @types cho Isotope
+npm install --save-dev @types/isotope-layout
+
+# Cài @types cho Node.js (vào dependencies)
+npm install @types/node
+
+# Cài @types cho Bootstrap (tùy chọn)
+npm install --save-dev @types/bootstrap
+
+═══════════════════════════════════════════════════════════════
+PHẦN 6: CÁCH KIỂM TRA THƯ VIỆN CÓ @types HAY KHÔNG
+═══════════════════════════════════════════════════════════════
+
+───────────────────────────────────────────────────────────────
+Cách 1: Tìm kiếm trên npm
+───────────────────────────────────────────────────────────────
+
+npm search @types/[tên-thư-viện]
+
+Ví dụ:
+  npm search @types/jquery.ripples
+  npm search @types/particles.js
+  npm search @types/wow.js
+
+───────────────────────────────────────────────────────────────
+Cách 2: Thử cài đặt
+───────────────────────────────────────────────────────────────
+
+npm install --save-dev @types/[tên-thư-viện]
+
+Nếu không tìm thấy, npm sẽ báo lỗi "package not found"
+
+───────────────────────────────────────────────────────────────
+Cách 3: Kiểm tra trên npmjs.com
+───────────────────────────────────────────────────────────────
+
+Truy cập: https://www.npmjs.com/search?q=@types/[tên-thư-viện]
+
+═══════════════════════════════════════════════════════════════
+PHẦN 7: TẠO TYPES THỦ CÔNG (NẾU KHÔNG CÓ @types)
+═══════════════════════════════════════════════════════════════
+
+Nếu thư viện không có @types, bạn có thể:
+
+───────────────────────────────────────────────────────────────
+Cách 1: Tạo file .d.ts trong thư mục types/
+───────────────────────────────────────────────────────────────
+
+Tạo file: types/jquery.ripples.d.ts
+
+declare module 'jquery.ripples' {
+  interface RipplesOptions {
+    resolution?: number;
+    dropRadius?: number;
+    perturbance?: number;
+    // ... các options khác
+  }
+
+  interface JQuery {
+    ripples(options?: RipplesOptions): JQuery;
+  }
+}
+
+───────────────────────────────────────────────────────────────
+Cách 2: Dùng any (tạm thời)
+───────────────────────────────────────────────────────────────
+
+// @ts-ignore
+import * as Ripples from 'jquery.ripples';
+
+Hoặc:
+
+const Ripples: any = require('jquery.ripples');
+
+───────────────────────────────────────────────────────────────
+Cách 3: Thêm vào tsconfig.json
+───────────────────────────────────────────────────────────────
+
+{
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./types"]
+  }
+}
+
+═══════════════════════════════════════════════════════════════
+PHẦN 8: TÓM TẮT NHANH
+═══════════════════════════════════════════════════════════════
+
+✅ BẮT BUỘC PHẢI CÀI:
+   - @types/aos
+   - @types/jquery
+   - @types/isotope-layout
+   - @types/node
+
+✅ TÙY CHỌN (nếu dùng JavaScript của thư viện):
+   - @types/bootstrap
+
+❌ KHÔNG CẦN CÀI (đã có types tích hợp):
+   - GSAP
+   - Swiper
+   - Smooth Scrollbar
+
+❌ KHÔNG CẦN CÀI (chỉ là CSS):
+   - Font Awesome
+   - Animate.css
+   - Bootstrap (nếu chỉ dùng CSS)
+
+❓ CẦN KIỂM TRA:
+   - jQuery Ripples
+   - Particles.js
+   - WOW.js
+   - Magnific Popup
+   - Waypoints
+
+═══════════════════════════════════════════════════════════════
+PHẦN 9: LỆNH CÀI ĐẶT HOÀN CHỈNH (COPY & PASTE)
+═══════════════════════════════════════════════════════════════
+
+# Cài tất cả @types đã xác nhận
+npm install --save-dev @types/aos@^3.0.7 @types/jquery@^3.5.29 @types/isotope-layout@^3.0.15
+
+# Cài @types/node (vào dependencies)
+npm install @types/node@^24.10.1
+
+# Cài @types/bootstrap (tùy chọn)
+npm install --save-dev @types/bootstrap
+
+═══════════════════════════════════════════════════════════════
+
+Lưu ý: Sau khi cài xong, TypeScript sẽ tự động nhận diện types
+của các thư viện khi bạn import và sử dụng trong code.
+
+═══════════════════════════════════════════════════════════════
+
