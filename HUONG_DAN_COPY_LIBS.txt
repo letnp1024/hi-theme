@@ -1,0 +1,163 @@
+═══════════════════════════════════════════════════════════════
+  HƯỚNG DẪN COPY THƯ VIỆN VỀ LOCAL
+  Tất cả thư viện sẽ được copy vào assets thay vì dùng CDN
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 1: CÀI ĐẶT JQUERY (Nếu chưa có)
+═══════════════════════════════════════════════════════════════
+
+npm install jquery
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 2: CÀI ĐẶT PACKAGES CẦN THIẾT
+═══════════════════════════════════════════════════════════════
+
+npm install --save-dev copyfiles npm-run-all
+
+═══════════════════════════════════════════════════════════════
+BƯỚC 3: COPY TẤT CẢ THƯ VIỆN VỀ LOCAL
+═══════════════════════════════════════════════════════════════
+
+Chạy lệnh sau để copy tất cả thư viện:
+
+npm run copy:libs
+
+Hoặc copy từng loại:
+- npm run copy:libs:css    → Copy CSS files
+- npm run copy:libs:js     → Copy JavaScript files
+- npm run copy:libs:fonts  → Copy Font files
+
+═══════════════════════════════════════════════════════════════
+CÁC THƯ VIỆN SẼ ĐƯỢC COPY
+═══════════════════════════════════════════════════════════════
+
+CSS FILES → assets/css/vendor/:
+───────────────────────────────────────────────────────────────
+✅ bootstrap.min.css          (Bootstrap CSS)
+✅ animate.min.css            (Animate.css)
+✅ swiper-bundle.min.css      (Swiper CSS)
+✅ aos.css                    (AOS CSS)
+✅ smooth-scrollbar.css       (Smooth Scrollbar CSS)
+✅ all.min.css                (Font Awesome CSS)
+
+JAVASCRIPT FILES → assets/js/vendor/:
+───────────────────────────────────────────────────────────────
+✅ jquery.min.js              (jQuery)
+✅ bootstrap.bundle.min.js    (Bootstrap JS)
+✅ gsap.min.js                (GSAP)
+✅ swiper-bundle.min.js       (Swiper JS)
+✅ aos.js                     (AOS JS)
+✅ smooth-scrollbar.js        (Smooth Scrollbar JS)
+
+LỢI ÍCH CỦA VIỆC TÁCH VENDOR:
+───────────────────────────────────────────────────────────────
+✅ Phân biệt rõ ràng: Code tự viết vs Thư viện bên thứ 3
+✅ Dễ quản lý: Dễ dàng cập nhật hoặc thay thế thư viện
+✅ Dễ ignore trong git: Có thể ignore vendor nếu muốn
+✅ Cấu trúc rõ ràng: Dễ maintain và hiểu codebase
+
+FONT FILES → assets/fonts/:
+───────────────────────────────────────────────────────────────
+✅ Font Awesome webfonts      (Tất cả fonts của Font Awesome)
+
+═══════════════════════════════════════════════════════════════
+CÁCH SỬ DỤNG TRONG HTML
+═══════════════════════════════════════════════════════════════
+
+Thay vì dùng CDN, bạn sẽ link đến file local:
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title | Hi Theme</title>
+    
+    <!-- CSS từ vendor (Thư viện bên thứ 3) -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/aos.css">
+    <link rel="stylesheet" href="assets/css/vendor/smooth-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/vendor/all.min.css">
+    
+    <!-- Custom CSS (Compile từ SCSS - Code tự viết) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Content -->
+    
+    <!-- JavaScript từ vendor (Thư viện bên thứ 3) -->
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendor/aos.js"></script>
+    <script src="assets/js/vendor/smooth-scrollbar.js"></script>
+    
+    <!-- Custom JavaScript (Compile từ TypeScript - Code tự viết) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+═══════════════════════════════════════════════════════════════
+LƯU Ý QUAN TRỌNG
+═══════════════════════════════════════════════════════════════
+
+1. CHẠY LẠI SCRIPT KHI:
+   - Cài đặt thư viện mới
+   - Cập nhật thư viện (npm update)
+   - Xóa thư mục assets và cần copy lại
+
+2. THỨ TỰ LOAD:
+   - jQuery phải load trước Bootstrap
+   - CSS load trước JS
+   - Custom code load cuối cùng
+
+3. GIT:
+   - File trong assets/css/vendor/ và assets/js/vendor/ 
+     sẽ được commit vào git
+   - Nếu muốn tự động copy mỗi lần build, có thể thêm vào .gitignore:
+     assets/css/vendor/
+     assets/js/vendor/
+     → Chỉ commit file source (SCSS, TypeScript) và tự động copy khi build
+
+4. BUILD TOÀN BỘ:
+   npm run build
+   → Sẽ copy libs + compile SCSS + compile TypeScript
+
+═══════════════════════════════════════════════════════════════
+CẤU TRÚC THƯ MỤC SAU KHI COPY
+═══════════════════════════════════════════════════════════════
+
+assets/
+├── css/
+│   ├── vendor/                    (Thư viện bên thứ 3)
+│   │   ├── bootstrap.min.css
+│   │   ├── animate.min.css
+│   │   ├── swiper-bundle.min.css
+│   │   ├── aos.css
+│   │   ├── smooth-scrollbar.css
+│   │   └── all.min.css (Font Awesome)
+│   │
+│   ├── style.css                  (Compile từ SCSS - Code tự viết)
+│   └── style.css.map
+│
+├── js/
+│   ├── vendor/                    (Thư viện bên thứ 3)
+│   │   ├── jquery.min.js
+│   │   ├── bootstrap.bundle.min.js
+│   │   ├── gsap.min.js
+│   │   ├── swiper-bundle.min.js
+│   │   ├── aos.js
+│   │   └── smooth-scrollbar.js
+│   │
+│   ├── main.js                    (Compile từ TypeScript - Code tự viết)
+│   └── main.js.map
+│
+└── fonts/
+    └── [Font Awesome webfonts]
+
+═══════════════════════════════════════════════════════════════
+

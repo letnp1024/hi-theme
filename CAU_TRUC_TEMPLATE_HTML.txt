@@ -46,22 +46,20 @@ assets/
 ├── css/                            (File CSS đã compile)
 │   ├── style.css                   (CSS chính - được compile từ SCSS)
 │   ├── style.css.map               (Source map cho SCSS)
-│   ├── bootstrap.min.css           (Bootstrap CSS - nếu dùng)
-│   ├── animate.css                 (Animate.css - nếu dùng)
-│   ├── fontawesome.css             (Font Awesome CSS)
-│   └── custom.css                  (CSS tùy chỉnh bổ sung)
+│   └── custom.css                  (CSS tùy chỉnh bổ sung - nếu có)
+│   │
+│   ⚠️ LƯU Ý: Không copy thư viện từ node_modules vào đây
+│   → Bootstrap, Animate.css, Font Awesome: Dùng CDN trong HTML
+│   → Chỉ compile code tự viết (SCSS) vào đây
 │
 ├── js/                             (File JavaScript đã compile)
 │   ├── main.js                     (JS chính - được compile từ TypeScript)
 │   ├── main.js.map                 (Source map cho TypeScript)
-│   ├── bootstrap.min.js            (Bootstrap JS - nếu dùng)
-│   ├── jquery.min.js               (jQuery - nếu dùng)
-│   ├── gsap.min.js                 (GSAP - nếu dùng)
-│   ├── swiper.min.js               (Swiper - nếu dùng)
-│   ├── aos.min.js                  (AOS - nếu dùng)
-│   ├── particles.min.js            (Particles.js - nếu dùng)
-│   ├── wow.min.js                  (WOW.js - nếu dùng)
-│   └── custom.js                   (JS tùy chỉnh bổ sung)
+│   └── custom.js                   (JS tùy chỉnh bổ sung - nếu có)
+│   │
+│   ⚠️ LƯU Ý: Không copy thư viện từ node_modules vào đây
+│   → jQuery, Bootstrap, GSAP, Swiper, AOS: Dùng CDN trong HTML
+│   → Chỉ compile code tự viết (TypeScript) vào đây
 │
 ├── scss/                           (File SCSS nguồn)
 │   ├── style.scss                  (File SCSS chính - import tất cả)
@@ -351,6 +349,223 @@ GỐC DỰ ÁN:
 ├── .eslintrc.json                  (ESLint configuration)
 │
 └── node_modules/                   (NPM packages - không commit)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 6.1: QUẢN LÝ THƯ VIỆN TỪ NODE_MODULES
+═══════════════════════════════════════════════════════════════
+
+❌ KHÔNG NÊN: Copy thủ công từ node_modules sang assets
+───────────────────────────────────────────────────────────────
+- Dễ quên khi cập nhật thư viện
+- Khó maintain và đồng bộ
+- Tốn thời gian và dễ sai sót
+- File trong assets/js và assets/css sẽ bị gitignore hoặc phải commit
+
+✅ PHƯƠNG PHÁP KHUYẾN NGHỊ: Sử dụng Build Tool tự động
+───────────────────────────────────────────────────────────────
+
+PHƯƠNG PHÁP 1: SỬ DỤNG NPM SCRIPTS (Đơn giản nhất)
+───────────────────────────────────────────────────────────────
+✅ CÓ - Các thư viện sẽ TỰ ĐỘNG được copy vào assets khi chạy script
+
+CÁCH HOẠT ĐỘNG:
+───────────────────────────────────────────────────────────────
+1. Cài đặt packages cần thiết:
+   npm install --save-dev copyfiles npm-run-all
+
+2. Thêm script vào package.json:
+
+"scripts": {
+  "copy:libs": "npm-run-all copy:libs:css copy:libs:js",
+  "copy:libs:css": "copyfiles -u 1 \"node_modules/bootstrap/dist/css/*.min.css\" \"node_modules/animate.css/animate.min.css\" \"assets/css/\"",
+  "copy:libs:js": "copyfiles -u 1 \"node_modules/jquery/dist/jquery.min.js\" \"node_modules/bootstrap/dist/js/*.min.js\" \"node_modules/gsap/dist/gsap.min.js\" \"assets/js/\"",
+  "build": "npm run copy:libs && npm run compile:sass && npm run compile:ts"
+}
+
+3. Chạy script để copy:
+   npm run copy:libs        → Copy tất cả thư viện
+   npm run copy:libs:css   → Chỉ copy CSS
+   npm run copy:libs:js    → Chỉ copy JS
+   npm run build           → Copy libs + Compile SCSS + Compile TS
+
+KẾT QUẢ:
+───────────────────────────────────────────────────────────────
+Sau khi chạy `npm run copy:libs`, các file sẽ được copy vào:
+- assets/css/bootstrap.min.css
+- assets/css/animate.min.css
+- assets/js/jquery.min.js
+- assets/js/bootstrap.min.js
+- assets/js/gsap.min.js
+
+LƯU Ý:
+───────────────────────────────────────────────────────────────
+- Script chỉ chạy KHI BẠN GỌI LỆNH (không tự động)
+- Cần chạy lại script khi:
+  + Cài đặt thư viện mới
+  + Cập nhật thư viện
+  + Xóa thư mục assets và cần copy lại
+- File trong assets/css và assets/js sẽ được commit vào git
+- Nên thêm assets/css/*.min.css và assets/js/*.min.js vào .gitignore
+  nếu muốn tự động copy mỗi lần build
+
+VÍ DỤ SỬ DỤNG:
+───────────────────────────────────────────────────────────────
+# Lần đầu setup
+npm install
+npm run copy:libs
+
+# Khi cập nhật thư viện
+npm update
+npm run copy:libs
+
+# Build toàn bộ (copy + compile)
+npm run build
+
+PHƯƠNG PHÁP 2: SỬ DỤNG CDN (Khuyến nghị cho template HTML)
+───────────────────────────────────────────────────────────────
+Link trực tiếp từ CDN trong HTML (không cần copy):
+
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+Ưu điểm:
+- Không cần copy file
+- Tự động cập nhật từ CDN
+- Có thể cache từ CDN
+- Giảm kích thước project
+
+Nhược điểm:
+- Cần internet để load
+- Phụ thuộc vào CDN
+
+PHƯƠNG PHÁP 3: SỬ DỤNG VITE/WEBPACK (Nâng cao)
+───────────────────────────────────────────────────────────────
+Bundle tất cả vào một file hoặc tự động copy:
+
+// vite.config.js
+import { copyFileSync } from 'fs';
+import { resolve } from 'path';
+
+export default {
+  build: {
+    rollupOptions: {
+      // Copy libs tự động
+    }
+  }
+}
+
+PHƯƠNG PHÁP 4: SỬ DỤNG GULP (Build tool truyền thống)
+───────────────────────────────────────────────────────────────
+// gulpfile.js
+const gulp = require('gulp');
+const copy = require('gulp-copy');
+
+gulp.task('copy-libs', function() {
+  return gulp.src([
+    'node_modules/bootstrap/dist/css/*.min.css',
+    'node_modules/jquery/dist/jquery.min.js'
+  ])
+  .pipe(copy('assets/', { prefix: 1 }));
+});
+
+═══════════════════════════════════════════════════════════════
+KHUYẾN NGHỊ CHO TEMPLATE HTML THUẦN
+═══════════════════════════════════════════════════════════════
+
+✅ CHO TEMPLATE HTML THUẦN: Dùng CDN + NPM Scripts
+───────────────────────────────────────────────────────────────
+
+1. Thư viện lớn (Bootstrap, jQuery, GSAP): Dùng CDN
+   → Link trực tiếp trong HTML
+   → Không cần copy vào assets
+
+2. Thư viện nhỏ hoặc custom: Copy tự động bằng npm scripts
+   → Chỉ copy những thư viện cần thiết
+   → Tự động hóa bằng script
+
+3. Code tự viết (SCSS, TypeScript): Compile vào assets
+   → SCSS → assets/css/style.css
+   → TypeScript → assets/js/main.js
+
+CẤU TRÚC ASSETS ĐỀ XUẤT:
+───────────────────────────────────────────────────────────────
+assets/
+├── css/
+│   ├── style.css              (Compile từ SCSS - commit)
+│   └── style.css.map           (Source map - commit)
+│
+├── js/
+│   ├── main.js                 (Compile từ TypeScript - commit)
+│   └── main.js.map             (Source map - commit)
+│
+└── [KHÔNG CẦN] bootstrap.min.css, jquery.min.js, etc.
+    → Dùng CDN trong HTML
+
+VÍ DỤ HTML VỚI CDN:
+───────────────────────────────────────────────────────────────
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- CDN CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS (Compile từ SCSS) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Content -->
+    
+    <!-- CDN JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Custom JS (Compile từ TypeScript) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+═══════════════════════════════════════════════════════════════
+NPM SCRIPTS MẪU CHO PACKAGE.JSON
+═══════════════════════════════════════════════════════════════
+
+{
+  "scripts": {
+    "compile:sass": "sass assets/scss:assets/css",
+    "compile:sass:watch": "sass assets/scss:assets/css --watch",
+    "compile:ts": "tsc",
+    "compile:ts:watch": "tsc --watch",
+    "compile:watch": "concurrently \"npm run compile:sass:watch\" \"npm run compile:ts:watch\"",
+    
+    "build": "npm run compile:sass && npm run compile:ts",
+    "build:watch": "npm run compile:watch"
+  }
+}
+
+Lưu ý: Không cần script copy libs nếu dùng CDN
+
+═══════════════════════════════════════════════════════════════
+KẾT LUẬN
+═══════════════════════════════════════════════════════════════
+
+❌ KHÔNG copy thủ công từ node_modules sang assets
+✅ DÙNG CDN cho thư viện lớn (Bootstrap, jQuery, GSAP, etc.)
+✅ CHỈ compile code tự viết (SCSS, TypeScript) vào assets
+✅ TỰ ĐỘNG HÓA bằng npm scripts nếu cần copy một số file nhỏ
+
+Cách này giúp:
+- Project nhẹ hơn (không commit thư viện lớn)
+- Dễ maintain (không cần đồng bộ file)
+- Nhanh hơn (CDN có cache)
+- Phù hợp với template HTML thuần
 
 ═══════════════════════════════════════════════════════════════
 PHẦN 7: CẤU TRÚC FILE HOÀN CHỈNH (TÓM TẮT)

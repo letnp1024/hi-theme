@@ -1,0 +1,64 @@
+// ============================================
+// Typography System
+// ============================================
+// Comprehensive typography variables for consistent text styling
+// Includes font families, sizes, weights, line heights, and letter spacing
+
+// ============================================
+// Font Families
+// ============================================
+$font-family-primary: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-family-secondary: 'Georgia', 'Times New Roman', serif;
+$font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Courier New', monospace;
+
+// Base Typography (for backward compatibility)
+$font-family-base: $font-family-primary;
+$font-size-base: 1rem; // 16px
+$line-height-base: 1.6;
+
+// ============================================
+// Font Sizes
+// ============================================
+// Modular scale (1.125 ratio - Major Third)
+// Provides harmonious size progression for headings and body text
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-md: 1.125rem;    // 18px
+$font-size-lg: 1.25rem;     // 20px
+$font-size-xl: 1.5rem;      // 24px
+$font-size-2xl: 1.875rem;   // 30px
+$font-size-3xl: 2.25rem;    // 36px
+$font-size-4xl: 3rem;       // 48px
+$font-size-5xl: 3.75rem;    // 60px
+$font-size-6xl: 4.5rem;     // 72px
+
+// ============================================
+// Font Weights
+// ============================================
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// ============================================
+// Line Heights
+// ============================================
+$line-height-none: 1;
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+
+// ============================================
+// Letter Spacing
+// ============================================
+$letter-spacing-tighter: -0.05em;
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
