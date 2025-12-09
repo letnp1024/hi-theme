@@ -1,0 +1,530 @@
+═══════════════════════════════════════════════════════════════
+  CẤU TRÚC FILE VÀ THƯ MỤC DỰ ÁN THEME WORDPRESS
+  Business/Corporate Theme - Hi Theme
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+PHẦN 1: CẤU TRÚC THƯ MỤC GỐC
+═══════════════════════════════════════════════════════════════
+
+hi-theme/                          (Thư mục gốc theme)
+│
+├── style.css                      (File bắt buộc - Thông tin theme WordPress)
+├── index.php                      (Template mặc định - Bắt buộc)
+├── functions.php                   (Chức năng theme chính)
+├── screenshot.png                  (Ảnh preview theme - 1200x900px)
+│
+├── header.php                     (Header template)
+├── footer.php                     (Footer template)
+├── sidebar.php                    (Sidebar template)
+│
+├── README.txt                     (Tài liệu hướng dẫn)
+├── CHANGELOG.txt                  (Lịch sử thay đổi)
+├── LICENSE.txt                    (Giấy phép)
+│
+├── assets/                        (Thư mục chứa tài nguyên tĩnh)
+├── inc/                           (Thư mục chứa các file chức năng)
+├── template-parts/                (Thư mục chứa các phần template)
+├── languages/                     (Thư mục chứa file ngôn ngữ)
+├── demo-content/                  (Thư mục chứa nội dung demo)
+└── documentation/                 (Thư mục chứa tài liệu)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 2: THƯ MỤC ASSETS (CSS, JS, Images, Fonts)
+═══════════════════════════════════════════════════════════════
+
+assets/
+│
+├── css/                           (File CSS đã compile)
+│   ├── style.css                  (CSS chính - được compile từ SCSS)
+│   ├── style.css.map              (Source map cho SCSS)
+│   ├── bootstrap.min.css          (Bootstrap CSS - nếu dùng)
+│   ├── animate.css                (Animate.css - nếu dùng)
+│   └── custom.css                 (CSS tùy chỉnh bổ sung)
+│
+├── js/                            (File JavaScript đã compile)
+│   ├── main.js                    (JS chính - được compile từ TypeScript)
+│   ├── main.js.map                (Source map cho TypeScript)
+│   ├── bootstrap.min.js           (Bootstrap JS - nếu dùng)
+│   ├── jquery.min.js              (jQuery - nếu dùng)
+│   ├── gsap.min.js                (GSAP - nếu dùng)
+│   ├── swiper.min.js              (Swiper - nếu dùng)
+│   ├── aos.min.js                 (AOS - nếu dùng)
+│   └── custom.js                  (JS tùy chỉnh bổ sung)
+│
+├── scss/                          (File SCSS nguồn)
+│   ├── style.scss                 (File SCSS chính)
+│   ├── _variables.scss            (Biến SCSS)
+│   ├── _mixins.scss               (Mixins SCSS)
+│   ├── _base.scss                 (Reset, typography)
+│   ├── _layout.scss               (Layout chung)
+│   ├── _components.scss           (Components)
+│   ├── _header.scss               (Header styles)
+│   ├── _footer.scss               (Footer styles)
+│   ├── _homepage.scss             (Homepage styles)
+│   ├── _pages.scss                (Page styles)
+│   ├── _responsive.scss           (Media queries)
+│   └── _utilities.scss            (Utility classes)
+│
+├── ts/                            (File TypeScript nguồn)
+│   ├── main.ts                    (File TypeScript chính)
+│   ├── components/
+│   │   ├── header.ts              (Header functionality)
+│   │   ├── slider.ts             (Slider functionality)
+│   │   ├── animations.ts         (Animation functions)
+│   │   └── forms.ts              (Form handling)
+│   ├── utils/
+│   │   ├── helpers.ts            (Helper functions)
+│   │   └── constants.ts          (Constants)
+│   └── types/
+│       └── custom.d.ts           (Custom type definitions)
+│
+├── images/                        (Hình ảnh)
+│   ├── logo/                      (Logo files)
+│   │   ├── logo.png
+│   │   ├── logo-dark.png
+│   │   └── logo-light.png
+│   ├── icons/                     (Icon files)
+│   ├── placeholders/              (Placeholder images)
+│   ├── demo/                      (Demo images)
+│   │   ├── hero/
+│   │   ├── portfolio/
+│   │   ├── team/
+│   │   └── testimonials/
+│   └── preloader/                 (Preloader images)
+│
+├── fonts/                         (Font files)
+│   ├── custom-fonts/              (Custom fonts nếu có)
+│   └── fontawesome/              (Font Awesome fonts)
+│
+└── videos/                        (Video files - nếu có)
+    └── hero-video.mp4
+
+═══════════════════════════════════════════════════════════════
+PHẦN 3: FILE TEMPLATE WORDPRESS
+═══════════════════════════════════════════════════════════════
+
+TEMPLATE CƠ BẢN:
+───────────────────────────────────────────────────────────────
+├── index.php                      (Template mặc định - Bắt buộc)
+├── header.php                     (Header template)
+├── footer.php                     (Footer template)
+├── sidebar.php                    (Sidebar template)
+│
+├── header-v1.php                  (Header biến thể 1)
+├── header-v2.php                  (Header biến thể 2)
+├── header-v3.php                  (Header biến thể 3)
+│
+├── footer-v1.php                  (Footer biến thể 1)
+├── footer-v2.php                  (Footer biến thể 2)
+├── footer-v3.php                  (Footer biến thể 3)
+
+TEMPLATE TRANG (PAGES):
+───────────────────────────────────────────────────────────────
+├── page.php                       (Template trang mặc định)
+├── page-about.php                 (Template trang About Us)
+├── page-contact.php               (Template trang Contact)
+├── page-services.php              (Template trang Services)
+├── page-faq.php                  (Template trang FAQ)
+├── page-testimonials.php          (Template trang Testimonials)
+├── page-404.php                  (Template trang 404)
+│
+├── front-page.php                 (Template trang chủ - Homepage)
+├── front-page-v1.php              (Homepage biến thể 1 - Default)
+├── front-page-v2.php              (Homepage biến thể 2 - Agency)
+├── front-page-v3.php              (Homepage biến thể 3 - Product/SaaS)
+
+TEMPLATE BÀI VIẾT (POSTS):
+───────────────────────────────────────────────────────────────
+├── single.php                     (Template bài viết mặc định)
+├── single-post.php                (Template bài viết blog)
+├── archive.php                    (Template archive mặc định)
+├── archive-post.php               (Template archive blog)
+│
+├── search.php                     (Template trang tìm kiếm)
+├── searchform.php                 (Form tìm kiếm)
+
+TEMPLATE CUSTOM POST TYPES:
+───────────────────────────────────────────────────────────────
+├── archive-service.php            (Template archive Services)
+├── single-service.php             (Template chi tiết Service)
+│
+├── archive-portfolio.php          (Template archive Portfolio)
+├── single-portfolio.php           (Template chi tiết Portfolio)
+│
+├── archive-team.php               (Template archive Team Members)
+├── single-team.php                (Template chi tiết Team Member)
+│
+├── archive-testimonial.php        (Template archive Testimonials)
+├── single-testimonial.php         (Template chi tiết Testimonial)
+│
+├── archive-product.php            (Template archive Products)
+├── single-product.php             (Template chi tiết Product)
+│
+├── taxonomy-product-category.php  (Template category Products)
+├── taxonomy-portfolio-category.php (Template category Portfolio)
+
+TEMPLATE HERO SECTIONS:
+───────────────────────────────────────────────────────────────
+├── template-parts/
+│   ├── hero/
+│   │   ├── hero-v1.php            (Hero biến thể 1 - Slider)
+│   │   ├── hero-v2.php            (Hero biến thể 2 - Video)
+│   │   └── hero-v3.php            (Hero biến thể 3 - Static Image)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 4: THƯ MỤC INC (CHỨC NĂNG THEME)
+═══════════════════════════════════════════════════════════════
+
+inc/
+│
+├── class-theme-setup.php          (Class thiết lập theme cơ bản)
+├── class-enqueue-assets.php       (Class đăng ký CSS/JS)
+├── class-walker-nav-menu.php     (Custom menu walker)
+│
+├── custom-post-types.php          (Đăng ký Custom Post Types)
+│   ├── Services CPT
+│   ├── Portfolio CPT
+│   ├── Team Members CPT
+│   └── Testimonials CPT
+│
+├── custom-taxonomies.php          (Đăng ký Custom Taxonomies)
+│   ├── Service Categories
+│   ├── Portfolio Categories
+│   └── Product Categories
+│
+├── theme-customizer.php           (WordPress Customizer settings)
+│   ├── Colors
+│   ├── Logo
+│   ├── Layout options
+│   └── Typography
+│
+├── theme-options.php              (Theme options - nếu dùng)
+│
+├── widgets.php                    (Đăng ký custom widgets)
+│
+├── tgm-plugin-activation.php      (TGM Plugin Activation library)
+├── required-plugins.php           (Danh sách plugin bắt buộc)
+│
+├── ajax-handlers.php              (AJAX handlers)
+│
+├── seo.php                        (SEO functions)
+│
+├── security.php                   (Security functions)
+│
+└── helpers.php                    (Helper functions)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 5: TEMPLATE PARTS (CÁC PHẦN TEMPLATE TÁI SỬ DỤNG)
+═══════════════════════════════════════════════════════════════
+
+template-parts/
+│
+├── header/
+│   ├── site-header.php            (Header chính)
+│   ├── site-navigation.php        (Navigation menu)
+│   └── site-branding.php          (Logo & site title)
+│
+├── footer/
+│   ├── site-footer.php            (Footer chính)
+│   ├── footer-widgets.php         (Footer widgets area)
+│   └── footer-copyright.php       (Copyright section)
+│
+├── hero/
+│   ├── hero-v1.php                (Hero slider)
+│   ├── hero-v2.php                (Hero video)
+│   └── hero-v3.php                (Hero static)
+│
+├── sections/
+│   ├── section-about.php          (About section)
+│   ├── section-services.php       (Services section)
+│   ├── section-portfolio.php     (Portfolio section)
+│   ├── section-team.php           (Team section)
+│   ├── section-testimonials.php  (Testimonials section)
+│   ├── section-cta.php            (Call to Action section)
+│   ├── section-features.php      (Features section)
+│   ├── section-pricing.php       (Pricing section)
+│   └── section-faq.php           (FAQ section)
+│
+├── content/
+│   ├── content-none.php           (No content found)
+│   ├── content-page.php           (Page content)
+│   ├── content-post.php           (Post content)
+│   ├── content-service.php        (Service content)
+│   ├── content-portfolio.php      (Portfolio content)
+│   ├── content-team.php           (Team member content)
+│   └── content-testimonial.php   (Testimonial content)
+│
+├── loops/
+│   ├── loop-post.php              (Post loop)
+│   ├── loop-service.php           (Service loop)
+│   ├── loop-portfolio.php         (Portfolio loop)
+│   └── loop-team.php              (Team loop)
+│
+├── preloader/
+│   └── preloader.php              (Preloader template)
+│
+└── pagination/
+    └── pagination.php              (Pagination template)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 6: DEMO CONTENT (NỘI DUNG DEMO)
+═══════════════════════════════════════════════════════════════
+
+demo-content/
+│
+├── demo-content.xml               (WordPress export XML)
+├── widgets.wie                    (Widget Import Export file)
+├── customizer.dat                 (Customizer settings)
+│
+├── images/                        (Demo images)
+│   ├── hero/
+│   ├── portfolio/
+│   ├── team/
+│   ├── services/
+│   └── testimonials/
+│
+└── one-click-demo-import/
+    └── demo-config.php             (Config cho One Click Demo Import)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 7: LANGUAGES (ĐA NGÔN NGỮ)
+═══════════════════════════════════════════════════════════════
+
+languages/
+│
+├── hi-theme.pot                   (Template file - Portable Object Template)
+├── hi-theme-vi.po                 (Vietnamese translation)
+├── hi-theme-vi.mo                 (Vietnamese compiled)
+├── hi-theme-en_US.po              (English translation)
+└── hi-theme-en_US.mo              (English compiled)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 8: DOCUMENTATION (TÀI LIỆU)
+═══════════════════════════════════════════════════════════════
+
+documentation/
+│
+├── installation.md                (Hướng dẫn cài đặt)
+├── getting-started.md             (Bắt đầu sử dụng)
+├── customization.md               (Hướng dẫn tùy chỉnh)
+├── custom-post-types.md           (Hướng dẫn CPTs)
+├── page-builder.md                (Hướng dẫn Page Builder)
+├── faq.md                         (Câu hỏi thường gặp)
+└── changelog.md                   (Lịch sử phiên bản)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 9: FILE CẤU HÌNH VÀ BUILD
+═══════════════════════════════════════════════════════════════
+
+GỐC DỰ ÁN:
+───────────────────────────────────────────────────────────────
+├── package.json                   (NPM dependencies & scripts)
+├── package-lock.json              (NPM lock file)
+├── tsconfig.json                  (TypeScript configuration)
+├── .gitignore                     (Git ignore file)
+├── .editorconfig                  (Editor configuration)
+│
+└── node_modules/                  (NPM packages - không commit)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 10: CẤU TRÚC FILE THEME HOÀN CHỈNH (TÓM TẮT)
+═══════════════════════════════════════════════════════════════
+
+hi-theme/
+│
+├── 📄 style.css                   ⭐ Bắt buộc - Thông tin theme
+├── 📄 index.php                   ⭐ Bắt buộc - Template mặc định
+├── 📄 functions.php               ⭐ Bắt buộc - Chức năng theme
+├── 📄 screenshot.png              ⭐ Bắt buộc - Ảnh preview
+│
+├── 📄 header.php                  (Header template)
+├── 📄 header-v1.php               (Header biến thể 1)
+├── 📄 header-v2.php               (Header biến thể 2)
+├── 📄 header-v3.php               (Header biến thể 3)
+│
+├── 📄 footer.php                  (Footer template)
+├── 📄 footer-v1.php               (Footer biến thể 1)
+├── 📄 footer-v2.php               (Footer biến thể 2)
+├── 📄 footer-v3.php               (Footer biến thể 3)
+│
+├── 📄 front-page.php              (Trang chủ)
+├── 📄 front-page-v1.php           (Homepage biến thể 1)
+├── 📄 front-page-v2.php           (Homepage biến thể 2)
+├── 📄 front-page-v3.php           (Homepage biến thể 3)
+│
+├── 📄 page.php                    (Template trang)
+├── 📄 page-about.php              (Trang About)
+├── 📄 page-contact.php            (Trang Contact)
+├── 📄 page-404.php                (Trang 404)
+│
+├── 📄 single.php                  (Template bài viết)
+├── 📄 archive.php                 (Template archive)
+├── 📄 search.php                  (Template tìm kiếm)
+│
+├── 📄 single-service.php         (Chi tiết Service)
+├── 📄 archive-service.php        (Danh sách Services)
+├── 📄 single-portfolio.php       (Chi tiết Portfolio)
+├── 📄 archive-portfolio.php      (Danh sách Portfolio)
+├── 📄 single-product.php         (Chi tiết Product)
+├── 📄 archive-product.php        (Danh sách Products)
+├── 📄 taxonomy-product-category.php (Category Products)
+│
+├── 📁 assets/
+│   ├── 📁 css/                    (CSS files)
+│   ├── 📁 js/                     (JavaScript files)
+│   ├── 📁 scss/                   (SCSS source files)
+│   ├── 📁 ts/                     (TypeScript source files)
+│   ├── 📁 images/                 (Images)
+│   ├── 📁 fonts/                  (Fonts)
+│   └── 📁 videos/                 (Videos)
+│
+├── 📁 inc/                        (Theme functions)
+│   ├── class-theme-setup.php
+│   ├── custom-post-types.php
+│   ├── theme-customizer.php
+│   ├── required-plugins.php
+│   └── ...
+│
+├── 📁 template-parts/            (Reusable template parts)
+│   ├── 📁 header/
+│   ├── 📁 footer/
+│   ├── 📁 hero/
+│   ├── 📁 sections/
+│   └── 📁 content/
+│
+├── 📁 demo-content/              (Demo content)
+├── 📁 languages/                 (Translation files)
+├── 📁 documentation/             (Documentation)
+│
+├── 📄 package.json               (NPM config)
+├── 📄 tsconfig.json              (TypeScript config)
+└── 📄 README.txt                 (Documentation)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 11: CÁC TRANG BẮT BUỘC THEO TIÊU CHUẨN
+═══════════════════════════════════════════════════════════════
+
+✅ CÁC TRANG CẦN CÓ:
+───────────────────────────────────────────────────────────────
+1. About Us
+   → page-about.php hoặc page.php với slug "about"
+
+2. Contact
+   → page-contact.php hoặc page.php với slug "contact"
+
+3. Product List
+   → archive-product.php
+
+4. Category List
+   → taxonomy-product-category.php
+
+5. Product Detail
+   → single-product.php
+
+6. Category Detail
+   → taxonomy-product-category.php
+
+7. News (Blog)
+   → archive.php hoặc archive-post.php
+
+8. News Details
+   → single.php hoặc single-post.php
+
+9. 404 Page
+   → page-404.php hoặc 404.php
+
+10. Preloading
+    → template-parts/preloader/preloader.php
+
+═══════════════════════════════════════════════════════════════
+PHẦN 12: CÁC BIẾN THỂ CẦN CÓ
+═══════════════════════════════════════════════════════════════
+
+✅ 3 BIẾN THỂ HEADER:
+───────────────────────────────────────────────────────────────
+- header-v1.php (Header style 1)
+- header-v2.php (Header style 2)
+- header-v3.php (Header style 3)
+
+✅ 3 BIẾN THỂ FOOTER:
+───────────────────────────────────────────────────────────────
+- footer-v1.php (Footer style 1)
+- footer-v2.php (Footer style 2)
+- footer-v3.php (Footer style 3)
+
+✅ 3 BIẾN THỂ HERO:
+───────────────────────────────────────────────────────────────
+- template-parts/hero/hero-v1.php (Hero slider)
+- template-parts/hero/hero-v2.php (Hero video)
+- template-parts/hero/hero-v3.php (Hero static image)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 13: FILE QUAN TRỌNG CẦN CHÚ Ý
+═══════════════════════════════════════════════════════════════
+
+⭐ FILE BẮT BUỘC CHO WORDPRESS:
+───────────────────────────────────────────────────────────────
+- style.css (Phải có thông tin theme ở đầu file)
+- index.php (Template mặc định)
+- functions.php (Chức năng theme)
+
+⭐ FILE QUAN TRỌNG:
+───────────────────────────────────────────────────────────────
+- screenshot.png (1200x900px - Ảnh preview theme)
+- README.txt (Tài liệu hướng dẫn)
+- CHANGELOG.txt (Lịch sử thay đổi)
+
+⭐ FILE CẤU HÌNH:
+───────────────────────────────────────────────────────────────
+- package.json (NPM dependencies)
+- tsconfig.json (TypeScript config)
+- .gitignore (Git ignore)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 14: LƯU Ý QUAN TRỌNG
+═══════════════════════════════════════════════════════════════
+
+1. TẤT CẢ FILE PHP PHẢI CÓ:
+   - Mở đầu bằng: <?php
+   - Không có khoảng trắng trước <?php
+   - Kết thúc bằng: ?> (hoặc không cần nếu chỉ có PHP)
+
+2. FILE STYLE.CSS PHẢI CÓ:
+   - Header thông tin theme WordPress ở đầu file
+   - Format:
+     /*
+     Theme Name: Hi Theme
+     Theme URI: https://...
+     Author: ...
+     Author URI: ...
+     Description: ...
+     Version: 1.0.0
+     License: ...
+     Text Domain: hi-theme
+     */
+
+3. SECURITY:
+   - Tất cả file PHP phải có security check
+   - Sử dụng: if (!defined('ABSPATH')) exit;
+
+4. NAMING CONVENTIONS:
+   - File PHP: lowercase, dùng dấu gạch ngang (-)
+   - Class: PascalCase
+   - Functions: snake_case hoặc camelCase
+   - Variables: camelCase hoặc snake_case
+
+5. FILE KHÔNG ĐƯỢC COMMIT:
+   - node_modules/
+   - .DS_Store
+   - *.log
+   - Thêm vào .gitignore
+
+═══════════════════════════════════════════════════════════════
+
+Lưu ý: Đây là cấu trúc đề xuất, có thể điều chỉnh theo nhu cầu
+cụ thể của dự án. Đảm bảo tuân thủ các tiêu chuẩn của WordPress
+và ThemeForest khi phát triển.
+
+═══════════════════════════════════════════════════════════════
+
