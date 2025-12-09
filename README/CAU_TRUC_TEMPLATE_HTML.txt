@@ -1,0 +1,1074 @@
+═══════════════════════════════════════════════════════════════
+  CẤU TRÚC FILE VÀ THƯ MỤC TEMPLATE HTML/CSS/JS THUẦN
+  Business/Corporate Template - Hi Theme
+  (Giai đoạn 1: Thiết kế giao diện tĩnh trước khi chuyển WordPress)
+═══════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════
+PHẦN 1: CẤU TRÚC THƯ MỤC GỐC
+═══════════════════════════════════════════════════════════════
+
+hi-theme-template/                 (Thư mục gốc template)
+│
+├── index.html                      (Trang chủ - Homepage)
+├── index-v1.html                   (Homepage biến thể 1 - Default)
+├── index-v2.html                   (Homepage biến thể 2 - Agency)
+├── index-v3.html                   (Homepage biến thể 3 - Product/SaaS)
+│
+├── about.html                      (Trang About Us)
+├── contact.html                    (Trang Contact)
+├── services.html                   (Trang Services - Danh sách)
+├── service-detail.html             (Trang Service - Chi tiết)
+├── portfolio.html                  (Trang Portfolio - Danh sách)
+├── portfolio-detail.html           (Trang Portfolio - Chi tiết)
+├── products.html                   (Trang Products - Danh sách)
+├── product-detail.html             (Trang Product - Chi tiết)
+├── category.html                   (Trang Category - Danh sách)
+├── category-detail.html            (Trang Category - Chi tiết)
+├── blog.html                       (Trang Blog/News - Danh sách)
+├── blog-detail.html                (Trang Blog/News - Chi tiết)
+├── testimonials.html               (Trang Testimonials)
+├── faq.html                        (Trang FAQ)
+├── team.html                       (Trang Team Members)
+├── 404.html                        (Trang 404 Error)
+│
+├── assets/                         (Thư mục chứa tài nguyên)
+├── includes/                       (Thư mục chứa các phần HTML tái sử dụng)
+├── components/                     (Thư mục chứa các component HTML)
+└── README.md                       (Tài liệu hướng dẫn)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 2: THƯ MỤC ASSETS (CSS, JS, Images, Fonts)
+═══════════════════════════════════════════════════════════════
+
+assets/
+│
+├── css/                            (File CSS đã compile)
+│   ├── vendor/                     (Thư viện bên thứ 3 - Copy từ node_modules)
+│   │   ├── bootstrap.min.css       (Bootstrap CSS)
+│   │   ├── animate.min.css         (Animate.css)
+│   │   ├── swiper-bundle.min.css   (Swiper CSS)
+│   │   ├── aos.css                 (AOS CSS)
+│   │   ├── smooth-scrollbar.css    (Smooth Scrollbar CSS)
+│   │   └── all.min.css             (Font Awesome CSS)
+│   │
+│   ├── style.css                   (CSS chính - được compile từ SCSS)
+│   ├── style.css.map               (Source map cho SCSS)
+│   └── custom.css                  (CSS tùy chỉnh bổ sung - nếu có)
+│   │
+│   ⚠️ LƯU Ý: 
+│   → Vendor files: Copy tự động bằng npm run copy:libs
+│   → Custom CSS: Compile từ SCSS (code tự viết)
+│
+├── js/                             (File JavaScript đã compile)
+│   ├── vendor/                     (Thư viện bên thứ 3 - Copy từ node_modules)
+│   │   ├── jquery.min.js           (jQuery)
+│   │   ├── bootstrap.bundle.min.js (Bootstrap JS)
+│   │   ├── gsap.min.js             (GSAP)
+│   │   ├── swiper-bundle.min.js    (Swiper JS)
+│   │   ├── aos.js                  (AOS JS)
+│   │   └── smooth-scrollbar.js     (Smooth Scrollbar JS)
+│   │
+│   ├── main.js                     (JS chính - được compile từ TypeScript)
+│   ├── main.js.map                 (Source map cho TypeScript)
+│   └── custom.js                   (JS tùy chỉnh bổ sung - nếu có)
+│   │
+│   ⚠️ LƯU Ý:
+│   → Vendor files: Copy tự động bằng npm run copy:libs
+│   → Custom JS: Compile từ TypeScript (code tự viết)
+│
+├── scss/                           (File SCSS nguồn)
+│   ├── style.scss                  (File SCSS chính - import tất cả)
+│   ├── _variables.scss             (Biến SCSS - Colors, Fonts, Spacing)
+│   ├── _mixins.scss                (Mixins SCSS - Reusable code)
+│   ├── _reset.scss                 (CSS Reset/Normalize)
+│   ├── _base.scss                  (Typography, Base styles)
+│   ├── _layout.scss                (Layout chung - Grid, Container)
+│   ├── _utilities.scss             (Utility classes)
+│   │
+│   ├── components/                 (Component styles)
+│   │   ├── _buttons.scss           (Button styles)
+│   │   ├── _forms.scss             (Form styles)
+│   │   ├── _cards.scss             (Card styles)
+│   │   ├── _modals.scss            (Modal styles)
+│   │   ├── _tabs.scss              (Tab styles)
+│   │   ├── _accordion.scss         (Accordion styles)
+│   │   └── _preloader.scss         (Preloader styles)
+│   │
+│   ├── sections/                   (Section styles)
+│   │   ├── _header.scss            (Header styles)
+│   │   ├── _hero.scss              (Hero section styles)
+│   │   ├── _about.scss             (About section styles)
+│   │   ├── _services.scss          (Services section styles)
+│   │   ├── _portfolio.scss         (Portfolio section styles)
+│   │   ├── _team.scss              (Team section styles)
+│   │   ├── _testimonials.scss      (Testimonials section styles)
+│   │   ├── _cta.scss               (CTA section styles)
+│   │   ├── _features.scss          (Features section styles)
+│   │   ├── _pricing.scss           (Pricing section styles)
+│   │   ├── _faq.scss               (FAQ section styles)
+│   │   └── _footer.scss            (Footer styles)
+│   │
+│   ├── pages/                      (Page-specific styles)
+│   │   ├── _homepage.scss          (Homepage styles)
+│   │   ├── _about-page.scss        (About page styles)
+│   │   ├── _contact-page.scss      (Contact page styles)
+│   │   ├── _blog-page.scss         (Blog page styles)
+│   │   └── _portfolio-page.scss    (Portfolio page styles)
+│   │
+│   └── _responsive.scss            (Media queries - Responsive)
+│
+├── ts/                             (File TypeScript nguồn)
+│   ├── main.ts                     (File TypeScript chính)
+│   │
+│   ├── components/                 (Component scripts)
+│   │   ├── header.ts               (Header functionality)
+│   │   ├── navigation.ts           (Navigation menu)
+│   │   ├── slider.ts               (Slider/Carousel)
+│   │   ├── hero.ts                 (Hero section)
+│   │   ├── animations.ts            (Animation functions)
+│   │   ├── forms.ts                (Form handling & validation)
+│   │   ├── modals.ts               (Modal functionality)
+│   │   ├── tabs.ts                 (Tab functionality)
+│   │   ├── accordion.ts            (Accordion functionality)
+│   │   ├── preloader.ts            (Preloader functionality)
+│   │   └── scroll-to-top.ts        (Scroll to top button)
+│   │
+│   ├── sections/                   (Section scripts)
+│   │   ├── about.ts                (About section)
+│   │   ├── services.ts             (Services section)
+│   │   ├── portfolio.ts            (Portfolio section)
+│   │   ├── team.ts                 (Team section)
+│   │   ├── testimonials.ts         (Testimonials section)
+│   │   └── faq.ts                  (FAQ section)
+│   │
+│   ├── utils/                      (Utility functions)
+│   │   ├── helpers.ts              (Helper functions)
+│   │   ├── constants.ts            (Constants)
+│   │   ├── debounce.ts             (Debounce function)
+│   │   └── throttle.ts             (Throttle function)
+│   │
+│   └── types/                      (Type definitions)
+│       └── custom.d.ts             (Custom type definitions)
+│
+├── images/                          (Hình ảnh)
+│   ├── logo/                        (Logo files)
+│   │   ├── logo.png
+│   │   ├── logo-dark.png
+│   │   ├── logo-light.png
+│   │   └── logo.svg
+│   │
+│   ├── icons/                       (Icon files)
+│   │   ├── favicon.ico
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   └── apple-touch-icon.png
+│   │
+│   ├── hero/                        (Hero section images)
+│   │   ├── hero-1.jpg
+│   │   ├── hero-2.jpg
+│   │   └── hero-3.jpg
+│   │
+│   ├── about/                       (About section images)
+│   ├── services/                    (Services images)
+│   ├── portfolio/                  (Portfolio images)
+│   │   ├── portfolio-1.jpg
+│   │   ├── portfolio-2.jpg
+│   │   └── ...
+│   │
+│   ├── team/                        (Team member images)
+│   │   ├── team-1.jpg
+│   │   ├── team-2.jpg
+│   │   └── ...
+│   │
+│   ├── testimonials/                (Testimonials images)
+│   ├── products/                    (Product images)
+│   ├── blog/                        (Blog post images)
+│   ├── placeholders/                 (Placeholder images)
+│   │   ├── placeholder-400x300.jpg
+│   │   ├── placeholder-800x600.jpg
+│   │   └── placeholder-1200x800.jpg
+│   │
+│   └── preloader/                   (Preloader images)
+│       └── preloader.gif
+│
+├── fonts/                           (Font files)
+│   ├── custom-fonts/                (Custom fonts nếu có)
+│   │   ├── font-name.woff2
+│   │   ├── font-name.woff
+│   │   └── font-name.ttf
+│   │
+│   └── fontawesome/                (Font Awesome fonts - Copy từ node_modules)
+│       ├── fa-solid-900.woff2
+│       ├── fa-regular-400.woff2
+│       ├── fa-brands-400.woff2
+│       └── ... (Tất cả Font Awesome webfonts)
+│
+└── videos/                          (Video files - nếu có)
+    ├── hero-video.mp4
+    └── hero-video.webm
+
+═══════════════════════════════════════════════════════════════
+PHẦN 3: THƯ MỤC INCLUDES (CÁC PHẦN HTML TÁI SỬ DỤNG)
+═══════════════════════════════════════════════════════════════
+
+includes/
+│
+├── header.html                     (Header mặc định)
+├── header-v1.html                  (Header biến thể 1)
+├── header-v2.html                  (Header biến thể 2)
+├── header-v3.html                  (Header biến thể 3)
+│
+├── footer.html                     (Footer mặc định)
+├── footer-v1.html                  (Footer biến thể 1)
+├── footer-v2.html                  (Footer biến thể 2)
+├── footer-v3.html                  (Footer biến thể 3)
+│
+├── navigation.html                 (Navigation menu)
+├── navigation-mobile.html          (Mobile navigation)
+│
+├── preloader.html                  (Preloader HTML)
+│
+└── scroll-to-top.html              (Scroll to top button)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 4: THƯ MỤC COMPONENTS (CÁC COMPONENT HTML)
+═══════════════════════════════════════════════════════════════
+
+components/
+│
+├── hero/
+│   ├── hero-v1.html                (Hero slider)
+│   ├── hero-v2.html                (Hero video)
+│   └── hero-v3.html                (Hero static image)
+│
+├── sections/
+│   ├── section-about.html           (About section)
+│   ├── section-services.html        (Services section)
+│   ├── section-portfolio.html       (Portfolio section)
+│   ├── section-team.html            (Team section)
+│   ├── section-testimonials.html   (Testimonials section)
+│   ├── section-cta.html            (Call to Action section)
+│   ├── section-features.html       (Features section)
+│   ├── section-pricing.html        (Pricing section)
+│   └── section-faq.html            (FAQ section)
+│
+├── cards/
+│   ├── card-service.html           (Service card)
+│   ├── card-portfolio.html         (Portfolio card)
+│   ├── card-team.html              (Team member card)
+│   ├── card-testimonial.html       (Testimonial card)
+│   ├── card-product.html           (Product card)
+│   └── card-blog.html              (Blog post card)
+│
+├── forms/
+│   ├── form-contact.html           (Contact form)
+│   ├── form-newsletter.html        (Newsletter form)
+│   └── form-search.html            (Search form)
+│
+├── modals/
+│   ├── modal-contact.html          (Contact modal)
+│   └── modal-video.html            (Video modal)
+│
+└── pagination/
+    └── pagination.html              (Pagination component)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 5: CẤU TRÚC FILE HTML CÁC TRANG
+═══════════════════════════════════════════════════════════════
+
+TRANG CHỦ (HOMEPAGE):
+───────────────────────────────────────────────────────────────
+├── index.html                      (Trang chủ mặc định)
+├── index-v1.html                   (Homepage biến thể 1 - Default)
+│   └── Sections: Hero, About, Services, Portfolio, 
+│       Testimonials, CTA, Footer
+│
+├── index-v2.html                   (Homepage biến thể 2 - Agency)
+│   └── Sections: Hero, Team, Working Process, Services, 
+│       Portfolio, Testimonials, CTA, Footer
+│
+└── index-v3.html                   (Homepage biến thể 3 - Product/SaaS)
+    └── Sections: Hero, Features, Pricing, Testimonials, 
+        FAQ, CTA, Footer
+
+TRANG NỘI DUNG CỐT LÕI:
+───────────────────────────────────────────────────────────────
+├── about.html                      (Trang About Us)
+│   └── Sections: Hero, History, Vision/Mission, Team, 
+│       Awards/Achievements
+│
+├── contact.html                    (Trang Contact)
+│   └── Sections: Hero, Contact Info, Map, Contact Form
+│
+├── services.html                  (Trang Services - Danh sách)
+│   └── Grid/List view các dịch vụ
+│
+├── service-detail.html             (Trang Service - Chi tiết)
+│   └── Chi tiết từng dịch vụ
+│
+├── testimonials.html              (Trang Testimonials)
+│   └── Danh sách tất cả testimonials
+│
+├── faq.html                        (Trang FAQ)
+│   └── Accordion/Collapse các câu hỏi
+│
+└── team.html                       (Trang Team Members)
+    └── Grid các thành viên đội ngũ
+
+TRANG DỰ ÁN/PORTFOLIO:
+───────────────────────────────────────────────────────────────
+├── portfolio.html                  (Trang Portfolio - Danh sách)
+│   └── Grid 2/3/4 columns các dự án
+│
+└── portfolio-detail.html          (Trang Portfolio - Chi tiết)
+    └── Case study chi tiết dự án
+
+TRANG SẢN PHẨM (PRODUCTS):
+───────────────────────────────────────────────────────────────
+├── products.html                   (Trang Products - Danh sách)
+│   └── Grid/List view các sản phẩm
+│
+├── product-detail.html             (Trang Product - Chi tiết)
+│   └── Chi tiết sản phẩm
+│
+├── category.html                   (Trang Category - Danh sách)
+│   └── Danh sách categories
+│
+└── category-detail.html           (Trang Category - Chi tiết)
+    └── Chi tiết category và products trong category
+
+TRANG TIN TỨC/BLOG:
+───────────────────────────────────────────────────────────────
+├── blog.html                       (Trang Blog/News - Danh sách)
+│   └── Grid/List view các bài viết
+│
+└── blog-detail.html                (Trang Blog/News - Chi tiết)
+    └── Chi tiết bài viết (có sidebar, comment section)
+
+TRANG KHÁC:
+───────────────────────────────────────────────────────────────
+└── 404.html                        (Trang 404 Error)
+    └── Trang báo lỗi 404 tùy chỉnh
+
+═══════════════════════════════════════════════════════════════
+PHẦN 6: FILE CẤU HÌNH VÀ BUILD
+═══════════════════════════════════════════════════════════════
+
+GỐC DỰ ÁN:
+───────────────────────────────────────────────────────────────
+├── package.json                    (NPM dependencies & scripts)
+├── package-lock.json               (NPM lock file)
+├── tsconfig.json                   (TypeScript configuration)
+├── .gitignore                      (Git ignore file)
+├── .editorconfig                   (Editor configuration)
+├── .prettierrc                     (Prettier configuration - nếu dùng)
+├── .eslintrc.json                  (ESLint configuration - nếu dùng)
+├── .sassrc                          (Sass configuration - nếu cần)
+├── README.md                       (Tài liệu hướng dẫn)
+├── CHANGELOG.md                    (Lịch sử thay đổi - nếu có)
+├── LICENSE                         (Giấy phép - nếu có)
+│
+└── node_modules/                   (NPM packages - không commit)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 6.1: QUẢN LÝ THƯ VIỆN TỪ NODE_MODULES
+═══════════════════════════════════════════════════════════════
+
+❌ KHÔNG NÊN: Copy thủ công từ node_modules sang assets
+───────────────────────────────────────────────────────────────
+- Dễ quên khi cập nhật thư viện
+- Khó maintain và đồng bộ
+- Tốn thời gian và dễ sai sót
+- File trong assets/js và assets/css sẽ bị gitignore hoặc phải commit
+
+✅ PHƯƠNG PHÁP KHUYẾN NGHỊ: Sử dụng Build Tool tự động
+───────────────────────────────────────────────────────────────
+
+PHƯƠNG PHÁP 1: SỬ DỤNG NPM SCRIPTS (Đơn giản nhất)
+───────────────────────────────────────────────────────────────
+✅ CÓ - Các thư viện sẽ TỰ ĐỘNG được copy vào assets khi chạy script
+
+CÁCH HOẠT ĐỘNG:
+───────────────────────────────────────────────────────────────
+1. Cài đặt packages cần thiết:
+   npm install --save-dev copyfiles npm-run-all
+
+2. Thêm script vào package.json:
+
+"scripts": {
+  "copy:libs": "npm-run-all copy:libs:css copy:libs:js",
+  "copy:libs:css": "copyfiles -u 1 \"node_modules/bootstrap/dist/css/*.min.css\" \"node_modules/animate.css/animate.min.css\" \"assets/css/\"",
+  "copy:libs:js": "copyfiles -u 1 \"node_modules/jquery/dist/jquery.min.js\" \"node_modules/bootstrap/dist/js/*.min.js\" \"node_modules/gsap/dist/gsap.min.js\" \"assets/js/\"",
+  "build": "npm run copy:libs && npm run compile:sass && npm run compile:ts"
+}
+
+3. Chạy script để copy:
+   npm run copy:libs        → Copy tất cả thư viện
+   npm run copy:libs:css   → Chỉ copy CSS
+   npm run copy:libs:js    → Chỉ copy JS
+   npm run build           → Copy libs + Compile SCSS + Compile TS
+
+KẾT QUẢ:
+───────────────────────────────────────────────────────────────
+Sau khi chạy `npm run copy:libs`, các file sẽ được copy vào:
+- assets/css/bootstrap.min.css
+- assets/css/animate.min.css
+- assets/js/jquery.min.js
+- assets/js/bootstrap.min.js
+- assets/js/gsap.min.js
+
+LƯU Ý:
+───────────────────────────────────────────────────────────────
+- Script chỉ chạy KHI BẠN GỌI LỆNH (không tự động)
+- Cần chạy lại script khi:
+  + Cài đặt thư viện mới
+  + Cập nhật thư viện
+  + Xóa thư mục assets và cần copy lại
+- File trong assets/css và assets/js sẽ được commit vào git
+- Nên thêm assets/css/*.min.css và assets/js/*.min.js vào .gitignore
+  nếu muốn tự động copy mỗi lần build
+
+VÍ DỤ SỬ DỤNG:
+───────────────────────────────────────────────────────────────
+# Lần đầu setup
+npm install
+npm run copy:libs
+
+# Khi cập nhật thư viện
+npm update
+npm run copy:libs
+
+# Build toàn bộ (copy + compile)
+npm run build
+
+PHƯƠNG PHÁP 2: SỬ DỤNG CDN (Khuyến nghị cho template HTML)
+───────────────────────────────────────────────────────────────
+Link trực tiếp từ CDN trong HTML (không cần copy):
+
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+Ưu điểm:
+- Không cần copy file
+- Tự động cập nhật từ CDN
+- Có thể cache từ CDN
+- Giảm kích thước project
+
+Nhược điểm:
+- Cần internet để load
+- Phụ thuộc vào CDN
+
+PHƯƠNG PHÁP 3: SỬ DỤNG VITE/WEBPACK (Nâng cao)
+───────────────────────────────────────────────────────────────
+Bundle tất cả vào một file hoặc tự động copy:
+
+// vite.config.js
+import { copyFileSync } from 'fs';
+import { resolve } from 'path';
+
+export default {
+  build: {
+    rollupOptions: {
+      // Copy libs tự động
+    }
+  }
+}
+
+PHƯƠNG PHÁP 4: SỬ DỤNG GULP (Build tool truyền thống)
+───────────────────────────────────────────────────────────────
+// gulpfile.js
+const gulp = require('gulp');
+const copy = require('gulp-copy');
+
+gulp.task('copy-libs', function() {
+  return gulp.src([
+    'node_modules/bootstrap/dist/css/*.min.css',
+    'node_modules/jquery/dist/jquery.min.js'
+  ])
+  .pipe(copy('assets/', { prefix: 1 }));
+});
+
+═══════════════════════════════════════════════════════════════
+KHUYẾN NGHỊ CHO TEMPLATE HTML THUẦN
+═══════════════════════════════════════════════════════════════
+
+✅ CHO TEMPLATE HTML THUẦN: Dùng CDN + NPM Scripts
+───────────────────────────────────────────────────────────────
+
+1. Thư viện lớn (Bootstrap, jQuery, GSAP): Dùng CDN
+   → Link trực tiếp trong HTML
+   → Không cần copy vào assets
+
+2. Thư viện nhỏ hoặc custom: Copy tự động bằng npm scripts
+   → Chỉ copy những thư viện cần thiết
+   → Tự động hóa bằng script
+
+3. Code tự viết (SCSS, TypeScript): Compile vào assets
+   → SCSS → assets/css/style.css
+   → TypeScript → assets/js/main.js
+
+CẤU TRÚC ASSETS ĐỀ XUẤT (VỚI VENDOR FOLDER):
+───────────────────────────────────────────────────────────────
+assets/
+├── css/
+│   ├── vendor/                 (Thư viện CSS - Copy từ node_modules)
+│   │   ├── bootstrap.min.css
+│   │   ├── animate.min.css
+│   │   ├── swiper-bundle.min.css
+│   │   ├── aos.css
+│   │   ├── smooth-scrollbar.css
+│   │   └── all.min.css
+│   │
+│   ├── style.css               (Compile từ SCSS - commit)
+│   └── style.css.map           (Source map - commit)
+│
+├── js/
+│   ├── vendor/                 (Thư viện JS - Copy từ node_modules)
+│   │   ├── jquery.min.js
+│   │   ├── bootstrap.bundle.min.js
+│   │   ├── gsap.min.js
+│   │   ├── swiper-bundle.min.js
+│   │   ├── aos.js
+│   │   └── smooth-scrollbar.js
+│   │
+│   ├── main.js                 (Compile từ TypeScript - commit)
+│   └── main.js.map             (Source map - commit)
+│
+└── fonts/
+    └── fontawesome/            (Font Awesome fonts - Copy từ node_modules)
+
+VÍ DỤ HTML VỚI LOCAL FILES (VENDOR FOLDER):
+───────────────────────────────────────────────────────────────
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Vendor CSS (Copy từ node_modules) -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/aos.css">
+    <link rel="stylesheet" href="assets/css/vendor/smooth-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/vendor/all.min.css">
+    
+    <!-- Custom CSS (Compile từ SCSS) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Content -->
+    
+    <!-- Vendor JS (Copy từ node_modules) -->
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendor/aos.js"></script>
+    <script src="assets/js/vendor/smooth-scrollbar.js"></script>
+    
+    <!-- Custom JS (Compile từ TypeScript) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+VÍ DỤ HTML VỚI CDN (NẾU KHÔNG DÙNG VENDOR):
+───────────────────────────────────────────────────────────────
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- CDN CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS (Compile từ SCSS) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Content -->
+    
+    <!-- CDN JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Custom JS (Compile từ TypeScript) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+═══════════════════════════════════════════════════════════════
+NPM SCRIPTS MẪU CHO PACKAGE.JSON
+═══════════════════════════════════════════════════════════════
+
+{
+  "scripts": {
+    "compile:sass": "sass assets/scss:assets/css",
+    "compile:sass:watch": "sass assets/scss:assets/css --watch",
+    "compile:ts": "tsc",
+    "compile:ts:watch": "tsc --watch",
+    "compile:watch": "concurrently \"npm run compile:sass:watch\" \"npm run compile:ts:watch\"",
+    
+    "build": "npm run compile:sass && npm run compile:ts",
+    "build:watch": "npm run compile:watch"
+  }
+}
+
+Lưu ý: Không cần script copy libs nếu dùng CDN
+
+═══════════════════════════════════════════════════════════════
+KẾT LUẬN
+═══════════════════════════════════════════════════════════════
+
+❌ KHÔNG copy thủ công từ node_modules sang assets
+✅ DÙNG CDN cho thư viện lớn (Bootstrap, jQuery, GSAP, etc.)
+✅ CHỈ compile code tự viết (SCSS, TypeScript) vào assets
+✅ TỰ ĐỘNG HÓA bằng npm scripts nếu cần copy một số file nhỏ
+
+Cách này giúp:
+- Project nhẹ hơn (không commit thư viện lớn)
+- Dễ maintain (không cần đồng bộ file)
+- Nhanh hơn (CDN có cache)
+- Phù hợp với template HTML thuần
+
+═══════════════════════════════════════════════════════════════
+PHẦN 7: CẤU TRÚC FILE HOÀN CHỈNH (TÓM TẮT)
+═══════════════════════════════════════════════════════════════
+
+hi-theme-template/
+│
+├── 📄 index.html                   (Trang chủ)
+├── 📄 index-v1.html                (Homepage biến thể 1)
+├── 📄 index-v2.html                (Homepage biến thể 2)
+├── 📄 index-v3.html                (Homepage biến thể 3)
+│
+├── 📄 about.html                  (Trang About)
+├── 📄 contact.html                (Trang Contact)
+├── 📄 services.html               (Danh sách Services)
+├── 📄 service-detail.html         (Chi tiết Service)
+├── 📄 portfolio.html              (Danh sách Portfolio)
+├── 📄 portfolio-detail.html       (Chi tiết Portfolio)
+├── 📄 products.html               (Danh sách Products)
+├── 📄 product-detail.html          (Chi tiết Product)
+├── 📄 category.html                (Danh sách Categories)
+├── 📄 category-detail.html        (Chi tiết Category)
+├── 📄 blog.html                   (Danh sách Blog)
+├── 📄 blog-detail.html            (Chi tiết Blog)
+├── 📄 testimonials.html           (Trang Testimonials)
+├── 📄 faq.html                    (Trang FAQ)
+├── 📄 team.html                   (Trang Team)
+├── 📄 404.html                    (Trang 404)
+│
+├── 📁 assets/
+│   ├── 📁 css/                     (CSS files)
+│   │   ├── 📁 vendor/              (Thư viện CSS - Copy từ node_modules)
+│   │   ├── style.css               (Compile từ SCSS)
+│   │   └── style.css.map
+│   │
+│   ├── 📁 js/                      (JavaScript files)
+│   │   ├── 📁 vendor/              (Thư viện JS - Copy từ node_modules)
+│   │   ├── main.js                 (Compile từ TypeScript)
+│   │   └── main.js.map
+│   │
+│   ├── 📁 scss/                    (SCSS source files)
+│   │   ├── style.scss
+│   │   ├── _variables.scss
+│   │   ├── _mixins.scss
+│   │   ├── components/
+│   │   ├── sections/
+│   │   └── pages/
+│   │
+│   ├── 📁 ts/                      (TypeScript source files)
+│   │   ├── main.ts
+│   │   ├── components/
+│   │   ├── sections/
+│   │   └── utils/
+│   │
+│   ├── 📁 images/                  (Images)
+│   ├── 📁 fonts/                   (Fonts - Bao gồm Font Awesome)
+│   └── 📁 videos/                  (Videos)
+│
+├── 📁 includes/                    (HTML includes)
+│   ├── header.html
+│   ├── header-v1.html
+│   ├── header-v2.html
+│   ├── header-v3.html
+│   ├── footer.html
+│   ├── footer-v1.html
+│   ├── footer-v2.html
+│   ├── footer-v3.html
+│   └── navigation.html
+│
+├── 📁 components/                  (HTML components)
+│   ├── 📁 hero/
+│   ├── 📁 sections/
+│   ├── 📁 cards/
+│   ├── 📁 forms/
+│   └── 📁 modals/
+│
+├── 📄 package.json                 (NPM config)
+├── 📄 package-lock.json            (NPM lock file)
+├── 📄 tsconfig.json                (TypeScript config)
+├── 📄 .gitignore                   (Git ignore)
+├── 📄 .editorconfig                (Editor config)
+├── 📄 README.md                    (Documentation)
+└── 📄 CHANGELOG.md                 (Changelog - nếu có)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 8: CÁC TRANG BẮT BUỘC THEO TIÊU CHUẨN
+═══════════════════════════════════════════════════════════════
+
+✅ CÁC TRANG CẦN CÓ:
+───────────────────────────────────────────────────────────────
+1. About Us
+   → about.html
+
+2. Contact
+   → contact.html
+
+3. Product List
+   → products.html
+
+4. Category List
+   → category.html
+
+5. Product Detail
+   → product-detail.html
+
+6. Category Detail
+   → category-detail.html
+
+7. News (Blog)
+   → blog.html
+
+8. News Details
+   → blog-detail.html
+
+9. 404 Page
+   → 404.html
+
+10. Preloading
+    → includes/preloader.html hoặc components/preloader.html
+
+═══════════════════════════════════════════════════════════════
+PHẦN 9: CÁC BIẾN THỂ CẦN CÓ
+═══════════════════════════════════════════════════════════════
+
+✅ 3 BIẾN THỂ HEADER:
+───────────────────────────────────────────────────────────────
+- includes/header-v1.html (Header style 1)
+- includes/header-v2.html (Header style 2)
+- includes/header-v3.html (Header style 3)
+
+✅ 3 BIẾN THỂ FOOTER:
+───────────────────────────────────────────────────────────────
+- includes/footer-v1.html (Footer style 1)
+- includes/footer-v2.html (Footer style 2)
+- includes/footer-v3.html (Footer style 3)
+
+✅ 3 BIẾN THỂ HERO:
+───────────────────────────────────────────────────────────────
+- components/hero/hero-v1.html (Hero slider)
+- components/hero/hero-v2.html (Hero video)
+- components/hero/hero-v3.html (Hero static image)
+
+✅ 3 BIẾN THỂ HOMEPAGE:
+───────────────────────────────────────────────────────────────
+- index-v1.html (Homepage Default)
+- index-v2.html (Homepage Agency)
+- index-v3.html (Homepage Product/SaaS)
+
+═══════════════════════════════════════════════════════════════
+PHẦN 10: CẤU TRÚC HTML CƠ BẢN (TEMPLATE)
+═══════════════════════════════════════════════════════════════
+
+CẤU TRÚC HTML CƠ BẢN:
+───────────────────────────────────────────────────────────────
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="...">
+    <meta name="keywords" content="...">
+    <title>Page Title | Hi Theme</title>
+    
+    <!-- Vendor CSS (Copy từ node_modules) -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/aos.css">
+    <link rel="stylesheet" href="assets/css/vendor/all.min.css">
+    
+    <!-- Custom CSS (Compile từ SCSS) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader"></div>
+    
+    <!-- Header -->
+    <header id="header"></header>
+    
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="hero"></section>
+        
+        <!-- Content Sections -->
+        <!-- ... -->
+    </main>
+    
+    <!-- Footer -->
+    <footer id="footer"></footer>
+    
+    <!-- Scroll to Top -->
+    <button id="scroll-to-top"></button>
+    
+    <!-- Vendor JavaScript (Copy từ node_modules) -->
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendor/aos.js"></script>
+    <script src="assets/js/vendor/smooth-scrollbar.js"></script>
+    
+    <!-- Custom JavaScript (Compile từ TypeScript) -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+═══════════════════════════════════════════════════════════════
+PHẦN 11: CÁCH TÍCH HỢP INCLUDES VÀ COMPONENTS
+═══════════════════════════════════════════════════════════════
+
+PHƯƠNG PHÁP 1: SỬ DỤNG JAVASCRIPT (Đơn giản)
+───────────────────────────────────────────────────────────────
+// Load header
+fetch('includes/header-v1.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header').innerHTML = data;
+    });
+
+PHƯƠNG PHÁP 2: SỬ DỤNG PHP (Nếu có server)
+───────────────────────────────────────────────────────────────
+<?php include 'includes/header-v1.html'; ?>
+
+PHƯƠNG PHÁP 3: SỬ DỤNG BUILD TOOL (Webpack, Vite, etc.)
+───────────────────────────────────────────────────────────────
+// Import components trong build process
+import Header from './includes/header-v1.html';
+
+PHƯƠNG PHÁP 4: SỬ DỤNG TEMPLATE ENGINE (Handlebars, Mustache)
+───────────────────────────────────────────────────────────────
+{{> includes/header-v1}}
+
+═══════════════════════════════════════════════════════════════
+PHẦN 12: QUY TRÌNH PHÁT TRIỂN
+═══════════════════════════════════════════════════════════════
+
+BƯỚC 1: THIẾT LẬP DỰ ÁN
+───────────────────────────────────────────────────────────────
+1. Tạo cấu trúc thư mục
+2. Cài đặt dependencies (npm install)
+3. Thiết lập SCSS và TypeScript
+4. Tạo file cấu hình
+
+BƯỚC 2: PHÁT TRIỂN COMPONENTS
+───────────────────────────────────────────────────────────────
+1. Tạo Header (3 biến thể)
+2. Tạo Footer (3 biến thể)
+3. Tạo Hero (3 biến thể)
+4. Tạo các Section components
+5. Tạo các Card components
+
+BƯỚC 3: PHÁT TRIỂN TRANG
+───────────────────────────────────────────────────────────────
+1. Trang chủ (3 biến thể)
+2. Trang About
+3. Trang Contact
+4. Trang Services
+5. Trang Portfolio
+6. Trang Products
+7. Trang Blog
+8. Trang 404
+
+BƯỚC 4: STYLING
+───────────────────────────────────────────────────────────────
+1. Viết SCSS cho từng component
+2. Viết SCSS cho từng section
+3. Viết SCSS cho từng page
+4. Responsive design
+5. Compile SCSS → CSS
+
+BƯỚC 5: JAVASCRIPT/TYPESCRIPT
+───────────────────────────────────────────────────────────────
+1. Viết TypeScript cho từng component
+2. Viết TypeScript cho từng section
+3. Tích hợp thư viện (GSAP, Swiper, AOS, etc.)
+4. Compile TypeScript → JavaScript
+
+BƯỚC 6: TỐI ƯU HÓA
+───────────────────────────────────────────────────────────────
+1. Minify CSS
+2. Minify JavaScript
+3. Optimize images
+4. Test performance
+
+BƯỚC 7: CHUẨN BỊ CHUYỂN WORDPRESS
+───────────────────────────────────────────────────────────────
+1. Tổ chức lại code
+2. Tách các phần tái sử dụng
+3. Ghi chú các phần cần chuyển đổi
+4. Tạo checklist chuyển đổi
+
+═══════════════════════════════════════════════════════════════
+PHẦN 13: LƯU Ý QUAN TRỌNG
+═══════════════════════════════════════════════════════════════
+
+1. NAMING CONVENTIONS:
+   - File HTML: lowercase, dùng dấu gạch ngang (-)
+   - File CSS/SCSS: lowercase, dùng dấu gạch ngang (-)
+   - File JS/TS: camelCase hoặc kebab-case
+   - Class names: BEM methodology (block__element--modifier)
+
+2. HTML STRUCTURE:
+   - Semantic HTML5 tags
+   - Accessibility (ARIA labels, alt text)
+   - SEO friendly (meta tags, structured data)
+
+3. CSS/SCSS:
+   - Sử dụng BEM naming
+   - Mobile-first approach
+   - Sử dụng CSS variables
+   - Comment code rõ ràng
+
+4. JAVASCRIPT/TYPESCRIPT:
+   - ES6+ syntax
+   - TypeScript cho type safety
+   - Modular code structure
+   - Comment code rõ ràng
+
+5. RESPONSIVE DESIGN:
+   - Mobile: 320px - 767px
+   - Tablet: 768px - 1023px
+   - Desktop: 1024px+
+   - Large Desktop: 1440px+
+
+6. BROWSER SUPPORT:
+   - Chrome (latest)
+   - Firefox (latest)
+   - Safari (latest)
+   - Edge (latest)
+
+7. PERFORMANCE:
+   - Optimize images (WebP format)
+   - Lazy loading images
+   - Minify CSS/JS
+   - Use CDN for libraries
+
+8. FILE KHÔNG ĐƯỢC COMMIT:
+   - node_modules/
+   - .DS_Store
+   - *.log
+   - Thêm vào .gitignore
+
+═══════════════════════════════════════════════════════════════
+PHẦN 14: CHECKLIST PHÁT TRIỂN
+═══════════════════════════════════════════════════════════════
+
+✅ SETUP:
+   [ ] Tạo cấu trúc thư mục
+   [ ] Cài đặt dependencies
+   [ ] Thiết lập SCSS compiler
+   [ ] Thiết lập TypeScript compiler
+   [ ] Tạo file cấu hình
+
+✅ COMPONENTS:
+   [ ] Header (3 biến thể)
+   [ ] Footer (3 biến thể)
+   [ ] Hero (3 biến thể)
+   [ ] Navigation
+   [ ] Preloader
+   [ ] Scroll to top
+
+✅ SECTIONS:
+   [ ] About section
+   [ ] Services section
+   [ ] Portfolio section
+   [ ] Team section
+   [ ] Testimonials section
+   [ ] CTA section
+   [ ] Features section
+   [ ] Pricing section
+   [ ] FAQ section
+
+✅ PAGES:
+   [ ] Homepage (3 biến thể)
+   [ ] About page
+   [ ] Contact page
+   [ ] Services page
+   [ ] Service detail page
+   [ ] Portfolio page
+   [ ] Portfolio detail page
+   [ ] Products page
+   [ ] Product detail page
+   [ ] Category page
+   [ ] Category detail page
+   [ ] Blog page
+   [ ] Blog detail page
+   [ ] Testimonials page
+   [ ] FAQ page
+   [ ] Team page
+   [ ] 404 page
+
+✅ STYLING:
+   [ ] Base styles
+   [ ] Component styles
+   [ ] Section styles
+   [ ] Page styles
+   [ ] Responsive styles
+   [ ] Animation styles
+
+✅ FUNCTIONALITY:
+   [ ] Navigation menu
+   [ ] Mobile menu
+   [ ] Slider/Carousel
+   [ ] Forms validation
+   [ ] Modals
+   [ ] Tabs
+   [ ] Accordion
+   [ ] Animations
+   [ ] Scroll effects
+
+✅ OPTIMIZATION:
+   [ ] Minify CSS
+   [ ] Minify JavaScript
+   [ ] Optimize images
+   [ ] Lazy loading
+   [ ] Performance testing
+
+✅ TESTING:
+   [ ] Cross-browser testing
+   [ ] Responsive testing
+   [ ] Functionality testing
+   [ ] Performance testing
+
+═══════════════════════════════════════════════════════════════
+
+Lưu ý: Đây là cấu trúc template HTML/CSS/JS thuần, sau khi hoàn
+thành sẽ được chuyển đổi thành WordPress theme. Đảm bảo code
+sạch, có tổ chức và dễ maintain để quá trình chuyển đổi dễ dàng.
+
+═══════════════════════════════════════════════════════════════
+
+
