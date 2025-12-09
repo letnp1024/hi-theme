@@ -1,0 +1,84 @@
+// ============================================
+// Bootstrap Variables Override
+// ============================================
+// Note: This file is imported AFTER Bootstrap's default variables
+// Variables from _variables.scss are already imported in main.scss
+// Typography from _typography.scss is also available via variables
+// 
+// Lưu ý: File này dùng @import context (không phải @use) vì Bootstrap
+// được thiết kế cho @import. Để override, không dùng !default
+// 
+// KHÔNG import typography ở đây vì sẽ gây xung đột với @import context
+// Sử dụng giá trị trực tiếp từ typography system
+
+// ============================================
+// Color Overrides
+// ============================================
+// Override Bootstrap primary and secondary colors
+// Using values from _variables.scss
+$primary: #1A73E8;
+$secondary: #0F4C81;
+
+// Override Bootstrap theme colors using Bootstrap's merge function
+// Note: $theme-colors is defined in Bootstrap's _variables.scss
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "primary": #1A73E8,
+    "secondary": #0F4C81,
+    "success": #10B981,
+    "warning": #F59E0B,
+    "danger": #EF4444,
+    "info": #3B82F6,
+  )
+);
+
+// ============================================
+// Typography Overrides
+// ============================================
+// Override Bootstrap font family using typography values directly
+// (Values match _typography.scss to maintain consistency)
+$font-family-base: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+$font-family-sans-serif: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+$font-family-serif: "Georgia", "Times New Roman", serif;
+$font-family-monospace: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Courier New", monospace;
+
+// Font sizes (matching typography system)
+$font-size-base: 1rem; // 16px
+$font-size-sm: 0.875rem; // 14px
+$font-size-lg: 1.125rem; // 18px
+
+// Font weights (matching typography system)
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line heights (matching typography system)
+$line-height-base: 1.6;
+$line-height-sm: 1.5;
+$line-height-lg: 1.625;
+
+// ============================================
+// Spacing Overrides
+// ============================================
+// Override Bootstrap spacing using 8px grid system
+$spacer: 1rem; // 16px base
+$spacers: (
+  0: 0,
+  1: 0.25rem,  // 4px
+  2: 0.5rem,   // 8px
+  3: 1rem,     // 16px
+  4: 1.5rem,   // 24px
+  5: 3rem,     // 48px
+);
+
+// ============================================
+// Border Radius Overrides
+// ============================================
+$border-radius: 0.5rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 1rem;
+$border-radius-pill: 50rem;
+
